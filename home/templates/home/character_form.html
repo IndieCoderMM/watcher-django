@@ -1,0 +1,85 @@
+{% extends 'home/base.html' %}
+{% load widget_tweaks %}
+{% block title %}
+	Watcher | Character
+{% endblock title %}
+
+{% block content %}
+<div class="w3-card-4 w3-round w3-dark-grey w3-container" style="width:80%; margin: auto;">
+	<form method="post" class="w3-container" >
+		{% csrf_token %}
+        <div>
+            {% if character %}
+                <h2 class="w3-padding"><b>Edit Character</b></h2>
+            {% else %}
+                <h2 class="w3-padding"><b>Add New Character</b></h2>
+            {% endif %}
+        </div>
+		<div class="w3-cell-row">
+			<div class="w3-cell w3-padding">
+				<label class="w3-text-white"><b>Hero Name:</b></label>
+				{{form.name | add_class:"w3-input w3-border"}}
+			</div>
+			<div class="w3-cell w3-padding">
+			<label class="w3-text-white"><b>ID:</b></label>
+			{{form.identity | add_class:"w3-select w3-border"}}
+		</div>
+		</div>
+		<div class="w3-padding">
+			<label class="w3-text-white"><b>First Appearence:</b></label>
+			{{form.origin | add_class:"w3-input w3-border"}}
+		</div>
+        <div class="w3-padding">
+			<label class="w3-text-white"><b>Power:</b></label>
+			{{form.power | add_class:"w3-input w3-border"}}
+		</div>
+        <div class="w3-padding">
+			<label class="w3-text-white"><b>Height:</b></label>
+			{{form.height | add_class:"w3-input w3-border"}}
+		</div>
+
+
+        <div class="w3-padding">
+			<label class="w3-text-white"><b>Team:</b></label>
+			{{form.team | add_class:"w3-input w3-border"}}
+		</div>
+
+        <div class="w3-cell-row ">
+            <div class="w3-padding w3-cell">
+                <label class="w3-text-white"><b>Strength:</b></label>
+                {{form.strength | add_class:"w3-input w3-border"}}
+            </div>
+
+            <div class="w3-padding w3-cell">
+                <label class="w3-text-white"><b>Combat Skill:</b></label>
+                {{form.combat | add_class:"w3-input w3-border"}}
+            </div>
+
+            <div class="w3-padding  w3-cell">
+                <label class="w3-text-white"><b>Intelligence:</b></label>
+                {{form.intelligence | add_class:"w3-input w3-border"}}
+            </div>
+        </div>
+
+        <div class="w3-padding">
+			<label class="w3-text-white"><b>Story:</b></label>
+			{{form.story | add_class:"w3-input w3-border"}}
+		</div>
+
+        <div class="w3-padding">
+			<label class="w3-text-white"><b>Picture:</b></label>
+			{{form.image | add_class:"w3-input w3-border"}}
+		</div>
+		
+		<div class="w3-right w3-margin-bottom">
+			<a href="{% url 'watcher:watch' %}" class="w3-button w3-blue-grey w3-hover-purple w3-large w3-round">Cancel</a>
+			{% if character %}
+				<button class="w3-button w3-green w3-border w3-hover-purple w3-large w3-round"  type="submit">Update Character</button>
+			{% else %}
+				<button class="w3-button w3-green w3-border w3-hover-purple w3-large w3-round"  type="submit">Add Character</button>
+			{% endif %}
+		</div>
+	</form>
+</div>
+	
+{% endblock %}

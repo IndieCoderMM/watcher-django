@@ -1,0 +1,42 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block title %}
+	Watcher | Home	
+{% endblock title %}
+
+
+{% block content %}
+	<div class="w3-display-container" style="width:100%;">
+		<img class="w3-image" src="{% static 'img/background.jpg' %}">
+		<div class="w3-container w3-display-middle w3-center" style="width:100%">
+			<div class="w3-panel">
+				<p class="w3-xlarge">
+					<b>Everything you need to know about <span class="w3-tag w3-red w3-large">Marvel</span> characters</b>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="w3-container w3-padding w3-white">
+		<p class="w3-large">Explore the amazing universe</p>
+		<div class="w3-row w3-center">
+			<input type="text" name="" id="" placeholder="Search your hero" class="w3-input w3-border w3-border-red w3-col s8">
+			<a href="/" class="w3-button w3-red w3-col s4">
+				Search
+			</a>
+		</div>
+	</div>
+	<div class="w3-container">
+		<h2>Trending Characters</h2>
+		<div class="w3-row-padding w3-container">
+		{% for hero in characters %}
+			<div class="w3-col s4 l4 w3-section">
+				<a class="w3-btn w3-round w3-white w3-hover-yellow" href="{% url 'watcher:hero_detail' hero.id %}">
+				<img class="w3-image" src="{{hero.image.url}}">	
+				</a>
+			</div>
+		{% endfor %}
+		</div>
+	</div>	
+
+	
+{% endblock content %}

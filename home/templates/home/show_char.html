@@ -1,0 +1,21 @@
+{% extends "home/base.html" %} 
+{% block title %} Watcher | Watch {% endblock title %} 
+{% block content %}
+<a href="{% url 'watcher:hero_create' %}" class="w3-btn w3-large w3-round  w3-yellow w3-right">Add Character</a>
+
+<div class="w3-row-padding w3-container">
+  {% for hero in characters %}
+    <div class="w3-col s6 l4 w3-section">
+      <div class="w3-display-container w3-black w3-hover-border-yellow" style="border:solid 5px white">
+        <img class="w3-image w3-padding" src="{{hero.image.url}}">
+        <div class="w3-black w3-opacity w3-display-bottommiddle" style="width:100%; height:20%;">
+        </div>
+        <h3 class="w3-display-bottomleft"><b>{{hero.name}}</b></h3>
+        <a href="{% url 'watcher:hero_detail' hero.id %}" class="w3-btn w3-round w3-red w3-small w3-display-bottomright w3-margin">Detail</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+{% endblock content %}

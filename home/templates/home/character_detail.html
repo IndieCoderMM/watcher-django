@@ -1,0 +1,19 @@
+{% extends 'home/base.html' %}
+{% block title %} Watcher | {{character.name}} {% endblock title %} 
+{% block content %}
+    <div class="w3-container">
+        <h1>{{character.name}}</h1>
+        <p>{{character.story}}</p>
+        <div class="w3-bar">
+            <img src="{{character.image.url}}" class="w3-image w3-bar-item" style="width: 50%;">
+            <div class="w3-card w3-white w3-round w3-padding w3-bar-item" style="width: 45%; margin: auto">
+                <p>Height: {{character.height}} ft</p>
+                <p>Intelligence: {{character.intelligence}}/10</p>
+                <p>Combat: {{character.combat}}/10</p>
+                <p>Strength: {{character.strength}}/10</p>
+                <p>Ability: {{character.power}}</p>
+                <p>Team: {{character.team}}</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

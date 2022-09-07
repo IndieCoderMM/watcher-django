@@ -1,0 +1,65 @@
+{% extends 'home/base.html' %}
+    {% load static %}
+    
+{% block title %}
+    Netflix | Login
+{% endblock title %}
+
+{% block essentials %}
+    <style>
+        .custom-bg {
+            background-image:url('{% static 'img/background.jpg' %}');
+            background-size:cover;
+            background-position: top left;
+            height: 100%;
+        }
+    </style>
+{% endblock essentials %}
+
+{% block content %}
+    <div class="w3-container w3-center w3-padding custom-bg">
+        <div class="w3-card-4 w3-round w3-padding" style="width:50%;margin:auto;background-color:rgba(0, 0, 0, 0.5);">
+            <form method='POST' class="w3-container" >
+                <h1 class="">
+                    <b>Log In</b>
+                </h1>
+                {% csrf_token %}
+                
+                {% if form.errors %} 
+                    <div class="w3-text-red">  
+                    <p>
+                        {{form.non_field_errors}}
+                    </p> 
+                    </div>
+                {% endif %}
+
+                <div class='w3-section'> 
+                    <Label class='w3-large w3-left'>
+                        Email
+                    </Label>
+                    <input class="w3-input w3-border" type="email" name="login" id="id_login" placeholder="Your Email">
+                </div>
+                <div class='w3-section'> 
+                    <Label class='w3-large w3-left'>
+                        Password
+                    </Label>
+                    <input class="w3-input w3-border" type="password" name="password" id="id_password" placeholder="Password">
+                </div>
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <div class="w3-section">
+                    <button class="w3-btn w3-round w3-red w3-hover-white">
+                        Log In
+                    </button>
+                </div>
+
+                <div class="">
+                    <p>
+                        Do not have an account ? <a href="{% url 'account_signup' %}" class="w3-text-blue"> Sign Up</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
