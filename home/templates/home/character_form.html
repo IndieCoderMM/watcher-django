@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="w3-card-4 w3-round w3-dark-grey w3-container" style="width:80%; margin: auto;">
-	<form method="post" class="w3-container" >
+	<form method="post" class="w3-container" enctype="multipart/form-data">
 		{% csrf_token %}
         <div>
             {% if character %}

@@ -2,7 +2,10 @@
 {% block title %} Watcher | {{character.name}} {% endblock title %} 
 {% block content %}
     <div class="w3-container">
-        <h1>{{character.name}}</h1>
+        <h1 class="">{{character.name}}</h1>
+
+        <a href="{% url 'watcher:hero_update' character.id %}" class="w3-btn w3-round w3-blue w3-small w3-hover-blue-grey">Edit</a>
+
         <p>{{character.story}}</p>
         <div class="w3-bar">
             <img src="{{character.image.url}}" class="w3-image w3-bar-item" style="width: 50%;">
